@@ -10,26 +10,16 @@ public class CPUEsther extends Maquinita {
 		super(nombre);
 		pokemonActual = getListaPokemon().get(0);
 	}
-
-	@Override
-	int pedirOpcion() {
-		return 1;
-	}
-
+	
 	@Override
 	Pokemon pedirPokemon(Pokemon activo, Pokemon rival) {
-		int option;
-		boolean exit = false;
-		Random rnd = new Random();
-		
-		do {
-			option = rnd.nextInt(getListaPokemon().size());
 			
-			if (getListaPokemon().get(option).getVida()>0) {
-				exit = true;
-				pokemonActual = getListaPokemon().get(option);
+			if (getListaPokemon().get(1).getVida()>0) {
+				pokemonActual = getListaPokemon().get(1);
 			}
-		} while(!exit);
+			else if(getListaPokemon().get(2).getVida()>0) {
+				pokemonActual = getListaPokemon().get(2);
+			}
 		
 		return pokemonActual;
 	}
@@ -38,5 +28,11 @@ public class CPUEsther extends Maquinita {
 	Ataque pedirAtaque(Pokemon tuyo, Pokemon rival) {
 		Random rnd = new Random();		
 		return pokemonActual.getEspecie().getAtaques().get(rnd.nextInt(4));
+	}
+
+	@Override
+	int pedirOpcion(Pokemon activo, Pokemon rival) {
+
+		return 1;
 	}
 }

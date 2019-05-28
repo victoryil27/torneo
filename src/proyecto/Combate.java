@@ -5,10 +5,10 @@ import java.util.Random;
 public class Combate {
 
 	private Presenter pr = new Presenter();
-	private Maquinita e1 = new CPUDani("Jara");
+	private Maquinita e1 = new CPUJara("Jara");
 //	private Entrenador e2 = new CPU(pr.requestName());
 //	private Entrenador e1 = new CPU("Yoseff");
-	private Maquinita e2 = new CPUDani("Dowy");
+	private Maquinita e2 = new CPUVictor("Victor");
 	private Pokemon p1=e1.getListaPokemon().get(0);
 	private Pokemon p2=e2.getListaPokemon().get(0);
 	int opcione1, opcione2, rapido;
