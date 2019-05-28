@@ -18,5 +18,5 @@ public abstract class Maquinita {
 	
 	abstract int pedirOpcion(); // Luchar, Cambiar o rendirse
 	abstract Pokemon pedirPokemon(); // Cambiar pokemon interfaz
-	abstract Ataque pedirAtaque(Pokemon rival); // Elegir ataque
+	abstract Ataque pedirAtaque(Pokemon tuyo, Pokemon rival); // Elegir ataque
 }
