@@ -1,16 +1,18 @@
 package proyecto;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.stream.Collectors;
+=======
+>>>>>>> parent of 0427b53... Pollo
 
 public class CPUVictor extends Maquinita {
     private static final Set<String> CATEGORIAS = Set.of("EstadoDor", "EstadoPar", "EstadoEnv");
-    private int cambiadoHace = 0;
     Random r = new Random();
+<<<<<<< HEAD
     private Database database = Database.INSTANCE;
 =======
 
@@ -18,6 +20,8 @@ public class CPUVictor extends Maquinita {
     private static final Set<String> CATEGORIAS = Set.of("EstadoDor", "EstadoPar", "EstadoEnv");
     Random r = new Random();
 >>>>>>> master
+=======
+>>>>>>> parent of 0427b53... Pollo
     private Pokemon pokemonEnCombate;
 
     CPUVictor(String nombre) {
@@ -34,14 +38,18 @@ public class CPUVictor extends Maquinita {
     @Override
     Ataque pedirAtaque(Pokemon tuyo, Pokemon rival) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         cambiadoHace++;
 =======
 >>>>>>> master
+=======
+>>>>>>> parent of 0427b53... Pollo
         return tuyo.getEspecie().getAtaques().get(comprobarAtaqueMasEfectivo(tuyo, rival));
     }
 
     @Override
     int pedirOpcion(Pokemon activo, Pokemon rival) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
         /*if (combrobarEfectividadTipo(rival.getEspecie().getTipo(), activo.getEspecie().getTipo()) > 1.5) {
@@ -61,27 +69,30 @@ public class CPUVictor extends Maquinita {
 =======
         return 1;
 >>>>>>> master
+=======
+        return 1;
+>>>>>>> parent of 0427b53... Pollo
     }
 
     @Override
     Pokemon pedirPokemon(Pokemon activo, Pokemon rival) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         int contador = 0;
         int muertosEntrenador1 = (int) getListaPokemon().stream().filter(pokemone -> pokemone.getVida() <= 0).count();
         if (muertosEntrenador1 >= 3) {
             return pokemonEnCombate;
+=======
+        Pokemon elegido;
+        if (this.getListaPokemon().get(1).getVida() <= 0) {
+            elegido = this.getListaPokemon().get(2);
+>>>>>>> parent of 0427b53... Pollo
         } else {
-            do {
-                if (contador >= 10) {
-                    pokemonEnCombate = getListaPokemon().get(r.nextInt(3));
-                } else {
-                    pokemonEnCombate = getListaPokemon().get(comprobarPokemonEfectivo(getListaPokemon(), rival));
-                }
-                contador++;
-            } while (pokemonEnCombate.getVida() <= 0);
+            elegido = this.getListaPokemon().get(1);
         }
-        return pokemonEnCombate;
+        return elegido;
     }
+
 
 
     //#######################################                  INTELIGENCIA " ARTIFICIAL "                          #######################################
@@ -96,17 +107,19 @@ public class CPUVictor extends Maquinita {
                 categoria = ataque.getCategoria().getClass().getSimpleName();
                 /*if (categoria.equals("EstadoDor") || categoria.equals("EstadoPar") || categoria.equals("EstadoEnv"))*/
                 if (CATEGORIAS.contains(categoria)) {
+                    System.out.println("Toma ataque efectivo come pollas");
                     masEfectivo = count;
                 } else if (calculoDaño(pokemonEnCombate, rival, ataque) > dolor) {
                     masEfectivo = count;
-                    dolor = (int) calculoDaño(pokemonEnCombate, rival, ataque);
+                    dolor =(int) calculoDaño(pokemonEnCombate, rival, ataque);
                 }
 
             }
             //Ataque que mas daño realiza
             else if (calculoDaño(pokemonEnCombate, rival, ataque) > dolor) {
+                System.out.println("Ya tiene estado desgraciado");
                 masEfectivo = count;
-                dolor = (int) calculoDaño(pokemonEnCombate, rival, ataque);
+                dolor =(int) calculoDaño(pokemonEnCombate, rival, ataque);
             }
             count++;
 =======
@@ -121,47 +134,41 @@ public class CPUVictor extends Maquinita {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private double calculoDaño(Pokemon atacante, Pokemon defensor, Ataque ataque) {
+=======
+    private double calculoDaño(Pokemon atacante, Pokemon defensor, Ataque ataque){
+>>>>>>> parent of 0427b53... Pollo
         double daño;
         double efec;
         int potenciaAtaq;
         int defensa;
-        if (ataque.getCategoria().getClass().getSimpleName().equals("Fisico")) {
-            potenciaAtaq = atacante.getEspecie().getAtq();
-            defensa = atacante.getEspecie().getDef();
-        } else {
-            potenciaAtaq = atacante.getEspecie().getAtqesp();
-            defensa = atacante.getEspecie().getDefesp();
+        if (ataque.getCategoria().getClass().getSimpleName().equals("Fisico")){
+            potenciaAtaq=atacante.getEspecie().getAtq();
+            defensa=atacante.getEspecie().getDef();
+        }
+        else{
+            potenciaAtaq=atacante.getEspecie().getAtqesp();
+            defensa=atacante.getEspecie().getDefesp();
         }
 
-        if (defensor.getEspecie().getSubtipo() == null) {
+        if(defensor.getEspecie().getSubtipo()==null) {
             efec = ataque.getEfec().get(defensor.getEspecie().getTipo());
-        } else {
-            double tipo1 = ataque.getEfec().get(defensor.getEspecie().getTipo());
+        }
+        else {
+            double tipo1 =ataque.getEfec().get(defensor.getEspecie().getTipo());
             double tipo2 = ataque.getEfec().get(defensor.getEspecie().getSubtipo());
-            efec = tipo1 * tipo2;
+            efec = tipo1*tipo2;
         }
-        if (atacante.getEspecie().getTipo() == ataque.getTipo() || atacante.getEspecie().getSubtipo() == ataque.getTipo()) {
-            daño = 0.01 * 1.5 * efec * (r.nextInt(15) + 85) * (((0.2 * 50 + 1) * potenciaAtaq * ataque.getPotencia()) / (25 * defensa) + 2);
-            return daño;
-        } else {
-            daño = 0.01 * 1 * efec * (r.nextInt(15) + 85) * (((0.2 * 50 + 1) * potenciaAtaq * ataque.getPotencia()) / (25 * defensa) + 2);
+        if (atacante.getEspecie().getTipo()==ataque.getTipo()||atacante.getEspecie().getSubtipo()==ataque.getTipo()) {
+            daño = 0.01 * 1.5 * efec * (r.nextInt(15)+85) * (((0.2*50+1)*potenciaAtaq*ataque.getPotencia())/(25*defensa)+2);
             return daño;
         }
-    }
-
-    private int comprobarPokemonEfectivo(List<Pokemon> mochila, Pokemon rival) {
-        int masEfectivo = 0;
-        int count = 0;
-        double maxEfec = 0;
-
-        for (Pokemon pokemon : mochila) {
-            if (combrobarEfectividadTipo(pokemon.getEspecie().getTipo(), rival.getEspecie().getTipo()) > maxEfec && pokemon.getVida() > 0) {
-                masEfectivo = count;
-                maxEfec = combrobarEfectividadTipo(pokemon.getEspecie().getTipo(), rival.getEspecie().getTipo());
-            }
-            count++;
+        else {
+            daño = 0.01 * 1 * efec * (r.nextInt(15)+85) * (((0.2*50+1)*potenciaAtaq*ataque.getPotencia())/(25*defensa)+2);
+            return daño;
         }
+<<<<<<< HEAD
 
         return masEfectivo;
     }
@@ -233,5 +240,7 @@ public class CPUVictor extends Maquinita {
             return daño;
         }
 >>>>>>> master
+=======
+>>>>>>> parent of 0427b53... Pollo
     }
 }
