@@ -13,7 +13,7 @@ public class CPUDani extends Maquinita {
 		return nombre;
 	}
 	@Override
-	int pedirOpcion() {
+	int pedirOpcion(Pokemon activo, Pokemon rival) {
 		return 1;
 	}
 	

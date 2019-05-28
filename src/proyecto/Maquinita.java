@@ -19,7 +19,7 @@ public abstract class Maquinita {
 		lista.add(f.crear());
 	}
 	
-	abstract int pedirOpcion(); // Luchar, Cambiar o rendirse
+	abstract int pedirOpcion(Pokemon activo, Pokemon rival); // Luchar, Cambiar o rendirse
 	abstract Pokemon pedirPokemon(Pokemon activo, Pokemon rival); // Cambiar pokemon interfaz
 	abstract Ataque pedirAtaque(Pokemon tuyo, Pokemon rival); // Elegir ataque
 

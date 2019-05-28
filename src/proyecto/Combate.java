@@ -33,8 +33,8 @@ public class Combate {
 		}
 		else {
 			pr.menuinicial(p1,p2);
-			opcione1=e1.pedirOpcion();
-			opcione2=e2.pedirOpcion();
+			opcione1=e1.pedirOpcion(p1,p2);
+			opcione2=e2.pedirOpcion(p2,p1);
 			if(opcione1==3) {
 				e1.getListaPokemon().get(0).setVida(0);
 				e1.getListaPokemon().get(1).setVida(0);
