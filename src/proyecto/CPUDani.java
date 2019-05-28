@@ -22,7 +22,7 @@ public class CPUDani extends Maquinita {
 	}
 	
 	@Override
-	Pokemon pedirPokemon() {
+	Pokemon pedirPokemon(Pokemon rival) {
 		Pokemon elegido;
 		if(this.getListaPokemon().get(1).getVida()<=0) {
 			elegido=this.getListaPokemon().get(2);

@@ -7,7 +7,7 @@ public abstract class Maquinita {
 	protected String nombre;
 	protected ArrayList<Pokemon> lista = new ArrayList<>();
 	
-	Maquinita(String nombre){
+	public Maquinita(String nombre){
 		this.nombre=nombre;
 		asignarPokemon();
 	}
@@ -20,7 +20,7 @@ public abstract class Maquinita {
 	}
 	
 	abstract int pedirOpcion(); // Luchar, Cambiar o rendirse
-	abstract Pokemon pedirPokemon(); // Cambiar pokemon interfaz
+	abstract Pokemon pedirPokemon(Pokemon rival); // Cambiar pokemon interfaz
 	abstract Ataque pedirAtaque(Pokemon tuyo, Pokemon rival); // Elegir ataque
 
 	public String getNombre() {

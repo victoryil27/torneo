@@ -25,11 +25,11 @@ public class Combate {
 	void turno()	{
 		if (p1.getVida()<=0) {
 			pr.fainted(p1);
-			p1=e1.pedirPokemon();
+			p1=e1.pedirPokemon(p2);
 		}
 		else if(p2.getVida()<=0) {
 			pr.fainted(p2);
-			p2=e2.pedirPokemon();
+			p2=e2.pedirPokemon(p1);
 		}
 		else {
 			pr.menuinicial(p1,p2);
@@ -48,7 +48,7 @@ public class Combate {
 					}
 					else {
 						pr.fainted(p2);
-						p2=e2.pedirPokemon();
+						p2=e2.pedirPokemon(p1);
 					}
 				}
 				else {
@@ -59,25 +59,25 @@ public class Combate {
 					}
 					else {
 						pr.fainted(p1);
-						p1=e1.pedirPokemon();
+						p1=e1.pedirPokemon(p2);
 					}
 				}
 				eventosfinal();
 			}
 			else if(opcione1==2&&opcione2==1) {
-				p1=e1.pedirPokemon();
+				p1=e1.pedirPokemon(p2);
 				p2.atacar(p2, e2.pedirAtaque(p2,p1), p1);
 				eventosfinal();
 			}
 			else if(opcione1==1&&opcione2==2) {
-				p2=e2.pedirPokemon();
+				p2=e2.pedirPokemon(p1);
 				Ataque ataquep1 = e1.pedirAtaque(p1,p2);
 				p1.atacar(p1, ataquep1, p2);
 				eventosfinal();
 			}
 			else if(opcione1==2&&opcione2==2) {
-				p1=e1.pedirPokemon();
-				p2=e2.pedirPokemon();
+				p1=e1.pedirPokemon(p2);
+				p2=e2.pedirPokemon(p1);
 				eventosfinal();
 			}
 		}
