@@ -10,8 +10,11 @@ public class Tipo {
 	}
 	
 	public String toString() {
-		
-		
 		return String.format("%s",tipo);	
 	}
+
+	public int getId() {
+		return id;
+	}
+	
 }

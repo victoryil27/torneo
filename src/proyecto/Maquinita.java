@@ -9,6 +9,7 @@ public abstract class Maquinita {
 	
 	Maquinita(String nombre){
 		this.nombre=nombre;
+		asignarPokemon();
 	}
 	
 	private void asignarPokemon(){
