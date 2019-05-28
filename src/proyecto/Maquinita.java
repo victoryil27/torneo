@@ -20,7 +20,7 @@ public abstract class Maquinita {
 	}
 	
 	abstract int pedirOpcion(); // Luchar, Cambiar o rendirse
-	abstract Pokemon pedirPokemon(Pokemon rival); // Cambiar pokemon interfaz
+	abstract Pokemon pedirPokemon(Pokemon activo, Pokemon rival); // Cambiar pokemon interfaz
 	abstract Ataque pedirAtaque(Pokemon tuyo, Pokemon rival); // Elegir ataque
 
 	public String getNombre() {
