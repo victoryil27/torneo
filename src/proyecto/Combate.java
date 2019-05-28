@@ -5,11 +5,10 @@ import java.util.Random;
 public class Combate {
 
 	private Presenter pr = new Presenter();
-	private Entrenador e1 = new Usuario(pr.requestName());
-//	private Entrenador e2 = new Usuario(pr.requestName());
+	private Maquinita e1 = new CPUDani("Jara");
 //	private Entrenador e2 = new CPU(pr.requestName());
 //	private Entrenador e1 = new CPU("Yoseff");
-	private Entrenador e2 = new CPUDani("Dowy");
+	private Maquinita e2 = new CPUDani("Dowy");
 	private Pokemon p1=e1.getListaPokemon().get(0);
 	private Pokemon p2=e2.getListaPokemon().get(0);
 	int opcione1, opcione2, rapido;
@@ -26,11 +25,11 @@ public class Combate {
 	void turno()	{
 		if (p1.getVida()<=0) {
 			pr.fainted(p1);
-			p1=e1.pedirCambio();
+			p1=e1.pedirPokemon();
 		}
 		else if(p2.getVida()<=0) {
 			pr.fainted(p2);
-			p2=e2.pedirCambio();
+			p2=e2.pedirPokemon();
 		}
 		else {
 			pr.menuinicial(p1,p2);
@@ -43,42 +42,42 @@ public class Combate {
 			}
 			else if (opcione1==1&&opcione2==1) {
 				if(comprobarvelocidad()==1) {
-					p1.atacar(p1, e1.pedirAtaque(p1), p2);
+					p1.atacar(p1, e1.pedirAtaque(p1,p2), p2);
 					if(p2.getVida()>0) {
-						p2.atacar(p2, e2.pedirAtaque(p2), p1);
+						p2.atacar(p2, e2.pedirAtaque(p2,p1), p1);
 					}
 					else {
 						pr.fainted(p2);
-						p2=e2.pedirCambio();
+						p2=e2.pedirPokemon();
 					}
 				}
 				else {
-					Ataque ataquep1 = e1.pedirAtaque(p1);
-					p2.atacar(p2, e2.pedirAtaque(p2), p1);
+					Ataque ataquep1 = e1.pedirAtaque(p1,p2);
+					p2.atacar(p2, e2.pedirAtaque(p2,p1), p1);
 					if(p1.getVida()>0) {
 						p1.atacar(p1, ataquep1, p2);
 					}
 					else {
 						pr.fainted(p1);
-						p1=e1.pedirCambio();
+						p1=e1.pedirPokemon();
 					}
 				}
 				eventosfinal();
 			}
 			else if(opcione1==2&&opcione2==1) {
-				p1=e1.pedirCambio();
-				p2.atacar(p2, e2.pedirAtaque(p2), p1);
+				p1=e1.pedirPokemon();
+				p2.atacar(p2, e2.pedirAtaque(p2,p1), p1);
 				eventosfinal();
 			}
 			else if(opcione1==1&&opcione2==2) {
-				p2=e2.pedirCambio();
-				Ataque ataquep1 = e1.pedirAtaque(p1);
+				p2=e2.pedirPokemon();
+				Ataque ataquep1 = e1.pedirAtaque(p1,p2);
 				p1.atacar(p1, ataquep1, p2);
 				eventosfinal();
 			}
 			else if(opcione1==2&&opcione2==2) {
-				p1=e1.pedirCambio();
-				p2=e2.pedirCambio();
+				p1=e1.pedirPokemon();
+				p2=e2.pedirPokemon();
 				eventosfinal();
 			}
 		}
@@ -102,9 +101,9 @@ public class Combate {
 		return rapido;
 	}
 
-	boolean comprobarderrota(Entrenador e) {
+	boolean comprobarderrota(Maquinita e12) {
 		boolean seguir = true;
-		if(e.getListaPokemon().get(0).getVida()<=0&&e.getListaPokemon().get(1).getVida()<=0&&e.getListaPokemon().get(2).getVida()<=0) {
+		if(e12.getListaPokemon().get(0).getVida()<=0&&e12.getListaPokemon().get(1).getVida()<=0&&e12.getListaPokemon().get(2).getVida()<=0) {
 			seguir=false;
 		}
 		return seguir;	

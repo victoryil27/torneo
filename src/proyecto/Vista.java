@@ -71,13 +71,6 @@ public class Vista implements View {
 	}
 
 	@Override
-	public Pokemon changePoke(Usuario usuario) {
-		System.out.printf("A que Pokemon quieres cambiar%n%n%s   %s/%s   %s%n%s   %s/%s   %s%n%s   %s/%s   %s%n%n", usuario.getListaPokemon().get(0).getEspecie().getNombre(), usuario.getListaPokemon().get(0).getVida()<0?0:usuario.getListaPokemon().get(0).getVida(), usuario.getListaPokemon().get(0).getEspecie().getVida(), usuario.getListaPokemon().get(0).getEstado().getClass().getSimpleName(), usuario.getListaPokemon().get(1).getEspecie().getNombre(), usuario.getListaPokemon().get(1).getVida()<0?0:usuario.getListaPokemon().get(1).getVida(), usuario.getListaPokemon().get(1).getEspecie().getVida(), usuario.getListaPokemon().get(1).getEstado().getClass().getSimpleName(), usuario.getListaPokemon().get(2).getEspecie().getNombre(), usuario.getListaPokemon().get(2).getVida()<0?0:usuario.getListaPokemon().get(2).getVida(), usuario.getListaPokemon().get(2).getEspecie().getVida(), usuario.getListaPokemon().get(2).getEstado().getClass().getSimpleName());
-		System.out.println();
-		return usuario.getListaPokemon().get(Teclado.read_range(1, 3, range.INCLUIDOS)-1);
-	}
-
-	@Override
 	public void pokemonDebilitado() {
 		System.out.println("Pokemon no valido");
 		System.out.println();
@@ -89,7 +82,7 @@ public class Vista implements View {
 	}
 
 	@Override
-	public void win(Entrenador e) {
+	public void win(Maquinita e) {
 		System.out.printf("%s ha ganado el combate",e.getNombre());
 	}
 

@@ -25,13 +25,11 @@ public interface View {
 
 	void menuinicial(Pokemon a1, Pokemon a2);
 
-	Pokemon changePoke(Usuario usuario);
-
 	void pokemonDebilitado();
 
 	void fainted(Pokemon p);
 
-	void win(Entrenador e);
+	void win(Maquinita e2);
 
 	void listapokemon(ArrayList<Pokemon> listaPokemon);
 

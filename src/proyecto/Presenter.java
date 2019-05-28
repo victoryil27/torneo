@@ -56,21 +56,12 @@ public class Presenter {
 		Presenterview.menuinicial(a1, a2);
 	}
 
-	public Pokemon changePoke(Usuario usuario) {
-		Pokemon cambio = Presenterview.changePoke(usuario); 
-		if(cambio.getVida()<=0) {
-			Presenterview.pokemonDebilitado();
-			return changePoke(usuario);
-		}
-		return cambio;
-	}
-
 	public void fainted(Pokemon p) {
 		Presenterview.fainted(p);
 	}
 
-	public void win(Entrenador e) {
-		Presenterview.win(e);
+	public void win(Maquinita e2) {
+		Presenterview.win(e2);
 	}
 
 	public void effective(double efec) {

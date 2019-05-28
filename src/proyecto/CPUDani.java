@@ -1,26 +1,28 @@
 package proyecto;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class CPUDani extends Entrenador {
+public class CPUDani extends Maquinita {
 	Random r = new Random();
 	CPUDani(String nombre)	{
 		super(nombre);
 	}
 	@Override
-	String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 	@Override
 	int pedirOpcion() {
 		return 1;
 	}
-	@Override
-	Ataque pedirAtaque(Pokemon activo) {
-		return activo.getEspecie().getAtaques().get(r.nextInt(4));
+	
+	public ArrayList<Pokemon> getListaPokemon() {
+		return lista;
 	}
+	
 	@Override
-	Pokemon pedirCambio() {
+	Pokemon pedirPokemon() {
 		Pokemon elegido;
 		if(this.getListaPokemon().get(1).getVida()<=0) {
 			elegido=this.getListaPokemon().get(2);
@@ -29,5 +31,9 @@ public class CPUDani extends Entrenador {
 			elegido=this.getListaPokemon().get(1);
 		}
 		return elegido;
+	}
+	@Override
+	Ataque pedirAtaque(Pokemon tuyo, Pokemon rival) {
+		return tuyo.getEspecie().getAtaques().get(r.nextInt(4));
 	}
 }
