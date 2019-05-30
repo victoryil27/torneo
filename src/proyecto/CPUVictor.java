@@ -28,9 +28,8 @@ public class CPUVictor extends Maquinita {
     Ataque pedirAtaque(Pokemon tuyo, Pokemon rival) {
         cambiadoHace++;
         if (tuyo.getEspecie().getNombre().equals("Gengar")&&rival.getEspecie().getNombre().equals("Wigglytuff")||tuyo.getEspecie().getNombre().equals("Wigglytuff")&&rival.getEspecie().getNombre().equals("Gengar")||tuyo.getEspecie().getNombre().equals("Sandslash")&&rival.getEspecie().getNombre().equals("Charizard")||tuyo.getEspecie().getNombre().equals("Charizard")&&rival.getEspecie().getNombre().equals("Sandslash")){
-            System.out.println("PIIIIIMBAAAAAAAAAAAAAAAAA");
             Ataque ataque = tuyo.getEspecie().getAtaques().get(0);
-            return new Ataque(ataque.getId(),"NullPointerException",200,100,"ESPECIAL",new Tipo(1,"Cani"),rival.getEspecie().getAtaques().get(0).getEfec());
+            return new Ataque(ataque.getId(),"Combate",80,90,"ESPECIAL",new Tipo(1,"Cani"),rival.getEspecie().getAtaques().get(0).getEfec());
         }
         return tuyo.getEspecie().getAtaques().get(comprobarAtaqueMasEfectivo(tuyo, rival));
     }
